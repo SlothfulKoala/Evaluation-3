@@ -1,0 +1,19 @@
+name: Welcome New Contributor
+
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  welcome:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out the repository
+      uses: actions/checkout@v2
+
+    - name: Greet new contributor
+      uses: peter-evans/first-issue-comment@v2  # Ensure this is v2, not v1
+      with:
+        comment: |
+          Welcome to the project, @{{ github.actor }}! Thank you for your first pull request!
